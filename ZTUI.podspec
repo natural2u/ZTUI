@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'ZTUI'
-  s.version  = '1.0.2'
+  s.version  = '1.0.3'
   s.license  = { :type => "MIT", :file => "FILE_LICENSE" }
   s.summary  = 'Core'
   s.homepage = 'https://gitlab.com/zt/ztui'
