@@ -7,7 +7,7 @@
 //
 
 #import "ZTBaseModel.h"
-#import <ZTCore/ZTError.h>
+#import "ZTError.h"
 
 @interface ZTTableModel : ZTBaseModel
 /**
@@ -25,6 +25,10 @@
  *
  *  @param params     请求参数，参数相关逻辑最好在model中实现
  *  @param completion 请求完成执行的block
+ *  @param failure    请求失败执行的block
  */
-- (void)loadItems:(NSDictionary *)params completion:(ZT_COMPLETION_BLOCK)completion;
+- (void)loadItems:(NSDictionary *)params
+       completion:(ZTServiceCompletionBlock)completion
+          failure:(ZTServiceFailureBlock)failure;
+
 @end

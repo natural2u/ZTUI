@@ -3,9 +3,13 @@ source 'https://gitlab.com/zt/ztcocoapods.git'
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
+target 'ZTUIDemo' do
+
 #私有git仓库依赖
-#pod ‘ZTCore', '~> 1.0.0'
+#pod 'ZTCore', '~> 1.0.0'
 
 #私有本地依赖库
-pod ‘ZTCore', :path => ‘../../ztcore'
-pod ‘ZTNetwork', :path => ‘../../ztnetwork'
+pod 'ZTCore', :path => '../../ZTCore'
+pod 'ZTNetwork', :path => '../../ZTNetwork'
+
+end

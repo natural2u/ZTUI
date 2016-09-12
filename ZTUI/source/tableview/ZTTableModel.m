@@ -10,7 +10,8 @@
 
 @implementation ZTTableModel
 - (void)loadItems:(NSDictionary *)params
-       completion:(ZT_COMPLETION_BLOCK)completion{
+       completion:(ZTServiceCompletionBlock)completion
+          failure:(ZTServiceFailureBlock)failure{
     
 }
 @end

@@ -6,12 +6,13 @@
 //
 //
 
-#import <ZTNetwork/ZTService.h>
+#import "ZTNetworkService.h"
+
 @interface ZTBaseModel : NSObject
 
 /**
 *  service 用于model中网络请求
 */
-@property (nonatomic,strong) ZTService *service;
+@property (nonatomic,strong) ZTNetworkService *service;
 
 @end
