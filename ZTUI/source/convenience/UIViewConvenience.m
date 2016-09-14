@@ -154,5 +154,37 @@
     self.frame = newFrame;
 }
 
+- (UIImage *)snapshotWithTransparencyOption:(BOOL)transparency{
+    // Passing 0 as the last argument ensures that the image context will match the current device's
+    // scaling mode.
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, !transparency, 0);
+    
+    CGContextRef cx = UIGraphicsGetCurrentContext();
+    
+    // Views that can scroll do so by modifying their bounds. We want to capture the part of the view
+    // that is currently in the frame, so we offset by the bounds of the view accordingly.
+    CGContextTranslateCTM(cx, -self.bounds.origin.x, -self.bounds.origin.y);
+    
+    BOOL didDraw = NO;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= NIIOS_7_0
+    if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+        didDraw = [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+    }
+#endif
+    if (!didDraw) {
+        [self.layer renderInContext:cx];
+    }
+    
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+- (UIImage *)snapshotImage{
+    return [self snapshotWithTransparencyOption:NO];
+}
+
+
 
 @end

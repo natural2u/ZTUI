@@ -7,6 +7,11 @@
 @interface UIView (Convenience)
 
 /**
+ * Returns an image snapshot of the view.
+ */
+- (UIImage *)snapshotImage;
+
+/**
  * Shortcut for frame.size.width
  *
  * Sets frame.size.width = width
@@ -67,5 +72,7 @@
 // Frame Origin
 @property (nonatomic) CGFloat x;
 @property (nonatomic) CGFloat y;
+
+
 
 @end

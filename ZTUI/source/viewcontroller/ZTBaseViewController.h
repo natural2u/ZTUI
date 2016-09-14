@@ -21,15 +21,6 @@
 - (void)loadData;
 
 /**
- *  处理加载的数据，如果返回错误则responseObject=nil，如果请求成功则error=nil，子类可实现重写
- *
- *  @param response       NSURLSessionDataTask
- *  @param responseObject 请求返回的数据
- *  @param error          请求失败的错误
- */
-- (void)dealResponseWithDataTask:(NSURLSessionDataTask *_Nullable) response responseObject:(id _Nullable)responseObject error:(NSError *_Nullable) error;
-
-/**
  *  处理请求成功的数据，子类可实现重写
  *
  *  @param responseObject 请求返回的数据
@@ -43,4 +34,39 @@
  */
 - (void)dealError:(NSError *_Nullable)error;
 
+/**
+ * The view has appeared at least once and hasn't been removed due to a memory warning.
+ */
+@property (nonatomic, readonly) BOOL hasViewAppeared;
+
+/**
+ * The view is about to appear and has not appeared yet.
+ */
+@property (nonatomic, readonly) BOOL isViewAppearing;
+
+
+/**
+ * Determines if the view will be resized automatically to fit the keyboard.
+ */
+
+@property (nonatomic) BOOL autoresizesForKeyboard;
+/**
+ * Sent to the controller before the keyboard slides in.
+ */
+- (void)keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds;
+
+/**
+ * Sent to the controller before the keyboard slides out.
+ */
+- (void)keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds;
+
+/**
+ * Sent to the controller after the keyboard has slid in.
+ */
+- (void)keyboardDidAppear:(BOOL)animated withBounds:(CGRect)bounds;
+
+/**
+ * Sent to the controller after the keyboard has slid out.
+ */
+- (void)keyboardDidDisappear:(BOOL)animated withBounds:(CGRect)bounds;
 @end
